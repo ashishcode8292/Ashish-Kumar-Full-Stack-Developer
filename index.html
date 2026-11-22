@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashish Kumar | Full Stack Developer &amp; Software Architect</title>
+  <meta name="description" content="Official Full Stack Developer Portfolio of Ashish Kumar. Building modern, responsive, and scalable web solutions, e-commerce platforms, and custom business software." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- QRCode.js for Dynamic UPI QR Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#030712',
+              900: '#050a18',
+              800: '#0a1229',
+              700: '#101d42',
+            },
+            cyanGlow: '#00d2ff',
+            royalGlow: '#2563eb',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Ultra-Premium Agency Styling */
+    :root {
+      --bg-deep: #050a18;
+      --cyan-accent: #00d2ff;
+      --blue-accent: #2563eb;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: #f8fafc;
+      overflow-x: hidden;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+
+    /* Interactive 3D Neural Background Canvas */
+    #neural-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Ambient Glow Orbs */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 9999px;
+      filter: blur(130px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* Glassmorphism Surface */
+    .glass-panel {
+      background: linear-gradient(145deg, rgba(13, 24, 54, 0.72) 0%, rgba(5, 10, 24, 0.88) 100%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(0, 210, 255, 0.16);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card-hover {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .glass-card-hover:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 210, 255, 0.45);
+      box-shadow: 0 24px 60px -12px rgba(0, 210, 255, 0.18), inset 0 1px 0 0 rgba(0, 210, 255, 0.25);
+    }
+
+    /* Signature Gradient Text & Buttons */
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #ffffff 10%, #00d2ff 55%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-primary-glow {
+      background: linear-gradient(90deg, #4f46e5 0%, #2563eb 50%, #00d2ff 100%);
+      background-size: 200% auto;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 10px 30px -6px rgba(0, 210, 255, 0.45);
+    }
+
+    .btn-primary-glow:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px -4px rgba(0, 210, 255, 0.65);
+    }
+
+    /* 3D Tilt Wrapper */
+    .tilt-wrapper {
+      perspective: 1200px;
+    }
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030712;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #10254a;
+      border-radius: 9999px;
+      border: 1px solid rgba(0, 210, 255, 0.25);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00d2ff;
+    }
+
+    /* Reveal Animation on Scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* QR Code container styling */
+    #upi-qr-box img, #upi-qr-box canvas {
+      margin: 0 auto;
+      border-radius: 12px;
+      display: block;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-400/30 selection:text-cyan-200">
+
+  <!-- Interactive 3D Particle & Neural Grid Background -->
+  <canvas id="neural-canvas"></canvas>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="ambient-orb w-[460px] h-[460px] bg-cyan-500/30 -top-24 -left-24"></div>
+  <div class="ambient-orb w-[520px] h-[520px] bg-blue-600/25 top-1/3 -right-32"></div>
+  <div class="ambient-orb w-[420px] h-[420px] bg-indigo-600/25 bottom-0 left-1/4"></div>
+
+  <!-- Toast Notification Banner (Replaces alert) -->
+  <div id="toast-notification" class="fixed top-24 right-4 sm:right-6 z-50 transform translate-x-[130%] transition-transform duration-300 ease-out max-w-sm w-full pointer-events-none">
+    <div class="glass-panel rounded-2xl p-4 border border-cyan-400/40 shadow-2xl flex items-center gap-3 pointer-events-auto">
+      <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300 shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <div>
+        <p id="toast-title" class="text-sm font-bold text-white">Action Completed</p>
+        <p id="toast-message" class="text-xs text-slate-300 mt-0.5">Copied to clipboard successfully.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Glassmorphic Navigation Bar -->
+  <header class="fixed top-0 inset-x-0 z-40 transition-all duration-300 border-b border-cyan-500/10 bg-[#050a18]/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Identity -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-blue-600/30 border border-cyan-400/50 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg sm:text-xl tracking-tight text-white block leading-none">
+            Ashish <span class="text-cyan-400">Kumar</span>
+          </span>
+          <span class="font-mono text-[11px] uppercase tracking-widest text-slate-400 block mt-1">
+            Full Stack Architect
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#stack" class="hover:text-cyan-400 transition-colors">Tech Stack</a>
+        <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+        <a href="#estimator" class="hover:text-cyan-400 transition-colors">Cost Estimator</a>
+        <a href="#payment" class="hover:text-cyan-400 transition-colors">UPI Booking</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Status + Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Live Availability Badge -->
+        <div class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+          </span>
+          Available for Projects
+        </div>
+
+        <!-- Direct WhatsApp CTA -->
+        <a href="https://wa.me/918292794750?text=Hi%20Ashish%2C%20I%20visited%20your%20portfolio%20and%20want%20to%20discuss%20a%20project."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary-glow px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-xl glass-panel text-cyan-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-cyan-500/15 bg-[#050a18]/95 backdrop-blur-2xl px-6 py-5 space-y-3">
+      <a href="#stack" class="block py-2 text-sm font-semibold text-slate-200 hover:text-cyan-400">Tech Stack</a>
+      <a href="#services" class="block py-2 text-sm font-semibold text-slate-200 hover:text-cyan-400">Services</a>
+      <a href="#estimator" class="block py-2 text-sm font-semibold text-slate-200 hover:text-cyan-400">Interactive Cost Estimator</a>
+      <a href="#payment" class="block py-2 text-sm font-semibold text-slate-200 hover:text-cyan-400">Direct UPI Booking</a>
+      <a href="#contact" class="block py-2 text-sm font-semibold text-slate-200 hover:text-cyan-400">Contact &amp; Inquiries</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main id="top" class="relative z-10 pt-28 sm:pt-32 pb-20">
+
+    <!-- ========================================================= -->
+    <!-- HERO SECTION                                              -->
+    <!-- ========================================================= -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+        <!-- Left Column: High-Impact Typography & CTAs -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-cyan-400/30 text-xs font-mono text-cyan-300">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <span>ENTERPRISE-GRADE FULL STACK ENGINEERING</span>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-xl sm:text-2xl font-medium text-slate-300">Hi, I’m</p>
+            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.08] text-white">
+              Ashish <span class="text-cyan-400 drop-shadow-[0_0_25px_rgba(0,210,255,0.45)]">Kumar</span>
+            </h1>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 pt-1">
+              Full Stack Developer
+            </h2>
+          </div>
+
+          <!-- Left-accented Value Proposition matching Banner -->
+          <div class="flex items-stretch gap-4 max-w-2xl">
+            <div class="w-1.5 rounded-full bg-gradient-to-b from-cyan-400 via-blue-500 to-indigo-600 shrink-0 shadow-[0_0_15px_rgba(0,210,255,0.6)]"></div>
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+              I build modern, responsive, and scalable web solutions for businesses, startups, and individuals — engineered with clean architecture, blazing speed, and conversion-focused UI/UX.
+            </p>
+          </div>
+
+          <!-- Magnetic CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#estimator" class="btn-primary-glow px-7 py-4 rounded-full text-sm sm:text-base font-bold text-white inline-flex items-center gap-3 group">
+              <span>Let’s Work Together</span>
+              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+
+            <button onclick="openUpiModal(1000)" class="px-6 py-4 rounded-full glass-panel border border-cyan-400/40 hover:border-cyan-300 text-sm sm:text-base font-bold text-cyan-300 hover:text-white inline-flex items-center gap-2.5 transition-all hover:shadow-[0_0_25px_rgba(0,210,255,0.25)]">
+              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+              </svg>
+              <span>Pay Booking / UPI</span>
+            </button>
+          </div>
+
+          <!-- Direct Contact Strip matching Banner -->
+          <div class="pt-4 flex flex-wrap items-center gap-6 text-sm text-slate-300 border-t border-slate-800/80">
+            <a href="mailto:ashishkr6422@gmail.com" class="inline-flex items-center gap-2.5 hover:text-cyan-400 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <span class="font-medium">ashishkr6422@gmail.com</span>
+            </a>
+
+            <a href="tel:+918292794750" class="inline-flex items-center gap-2.5 hover:text-cyan-400 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </span>
+              <span class="font-mono font-semibold">+91 8292794750</span>
+            </a>
+
+            <a href="https://github.com/ashishkar62043-dotcom" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-cyan-400 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </span>
+              <span class="font-mono text-xs font-semibold">GitHub</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ashish-kumar-a4a586448/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-cyan-400 transition-colors">
+              <span class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                </svg>
+              </span>
+              <span class="font-mono text-xs font-semibold">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: 3D Interactive Showcase Card with ashish-123.jpg + Graceful Fallback -->
+        <div class="lg:col-span-5 tilt-wrapper">
+          <div id="hero-tilt-card" class="tilt-card relative glass-panel rounded-3xl p-4 sm:p-5 border border-cyan-400/35 shadow-[0_25px_70px_-15px_rgba(0,210,255,0.28)]">
+            <!-- Top Window Bar -->
+            <div class="flex items-center justify-between px-2 pb-3 border-b border-cyan-500/15 mb-3">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+              </div>
+              <span class="font-mono text-[11px] text-cyan-300/90 tracking-wider">ashish-kumar.dev // LIVE</span>
+              <span class="px-2 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 font-mono text-[10px] border border-cyan-400/30">VERIFIED</span>
+            </div>
+
+            <!-- Hero Visual Container: Loads ashish-123.jpg seamlessly, or renders ultra-clean 3D Developer Illustration fallback -->
+            <div class="relative rounded-2xl overflow-hidden bg-[#060d21] border border-cyan-400/20 aspect-[16/10] flex items-center justify-center group">
+              <img
+                id="hero-banner-img"
+                src="ashish-123.jpg"
+                alt="Ashish Kumar - Full Stack Developer"
+                class="w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105"
+                onerror="this.style.display='none'; document.getElementById('hero-svg-fallback').classList.remove('hidden');"
+              />
+
+              <!-- Ultra-Premium Custom SVG Fallback if ashish-123.jpg is not yet placed in folder -->
+              <div id="hero-svg-fallback" class="hidden w-full h-full relative flex flex-col justify-between p-6 bg-gradient-to-br from-[#07112b] via-[#0a193d] to-[#040917]">
+                <!-- Grid Overlay -->
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#00d2ff 1px, transparent 1px); background-size: 18px 18px;"></div>
+                
+                <div class="relative z-10 flex items-center justify-between">
+                  <div class="px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 font-mono text-xs">
+                    &lt;FullStackArchitect /&gt;
+                  </div>
+                  <div class="text-right font-mono text-[11px] text-slate-400">
+                    <div>JAVA • SPRING BOOT</div>
+                    <div class="text-cyan-400">REACT • MYSQL</div>
+                  </div>
+                </div>
+
+                <!-- Center Monogram & Code Visual -->
+                <div class="relative z-10 my-auto flex items-center gap-4">
+                  <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-400 to-blue-600 p-0.5 shadow-lg shadow-cyan-500/30 shrink-0">
+                    <div class="w-full h-full rounded-2xl bg-[#050a18] flex items-center justify-center">
+                      <span class="text-2xl font-extrabold text-gradient-cyan">AK</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-xs font-mono text-cyan-400">ASHISH KUMAR</div>
+                    <div class="text-lg font-bold text-white leading-snug">Good Code, Better Future</div>
+                    <div class="text-xs text-slate-300 mt-1">Keep Learning • Keep Building</div>
+                  </div>
+                </div>
+
+                <!-- Bottom Info Hint -->
+                <div class="relative z-10 flex items-center justify-between text-[11px] font-mono text-slate-400 border-t border-cyan-500/20 pt-2.5">
+                  <span>UPI: 468468468-@ybl</span>
+                  <span class="text-emerald-400">● READY TO DEPLOY</span>
+                </div>
+              </div>
+
+              <!-- Subtle Bottom Vignette -->
+              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#050a18]/90 to-transparent pointer-events-none"></div>
+            </div>
+
+            <!-- Floating Live Metrics Bar -->
+            <div class="grid grid-cols-3 gap-2.5 mt-4">
+              <div class="rounded-2xl bg-[#070f24]/90 border border-cyan-500/20 p-3 text-center">
+                <div class="text-sm sm:text-base font-extrabold text-cyan-400">100%</div>
+                <div class="text-[11px] text-slate-300 font-medium mt-0.5">Custom Code</div>
+              </div>
+              <div class="rounded-2xl bg-[#070f24]/90 border border-cyan-500/20 p-3 text-center">
+                <div class="text-sm sm:text-base font-extrabold text-white">Fast</div>
+                <div class="text-[11px] text-slate-300 font-medium mt-0.5">Turnaround</div>
+              </div>
+              <div class="rounded-2xl bg-[#070f24]/90 border border-cyan-500/20 p-3 text-center">
+                <div class="text-sm sm:text-base font-extrabold text-emerald-400">24/7</div>
+                <div class="text-[11px] text-slate-300 font-medium mt-0.5">Direct Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- INTERACTIVE TECH STACK MATRIX (Matching Banner Icons)     -->
+    <!-- ========================================================= -->
+    <section id="stack" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cyan-400 block mb-2">// CORE TECHNOLOGY ARSENAL</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            Full-Stack <span class="text-gradient-cyan">Engineering Matrix</span>
+          </h2>
+        </div>
+        <p class="text-sm text-slate-400 max-w-md">
+          Click or hover on any technology to inspect how I architect secure, scalable frontends, REST APIs, and relational databases.
+        </p>
+      </div>
+
+      <!-- 8 Core Stack Cards matching Banner: HTML5, CSS3, JS, Java, Spring Boot, MySQL, React, Bootstrap -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 sm:gap-4" id="tech-grid">
+        <!-- Populated dynamically via clean JS with crisp custom SVG icons -->
+      </div>
+
+      <!-- Active Tech Detail Bar -->
+      <div id="tech-detail-panel" class="mt-5 glass-panel rounded-2xl p-4 sm:p-5 border border-cyan-400/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div id="tech-active-badge" class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/40 flex items-center justify-center text-cyan-300 font-mono font-bold text-sm shrink-0">
+            JS
+          </div>
+          <div>
+            <h3 id="tech-active-title" class="text-base font-bold text-white">JavaScript (ES6+) &amp; Interactive Architecture</h3>
+            <p id="tech-active-desc" class="text-xs sm:text-sm text-slate-300 mt-0.5">Asynchronous APIs, dynamic DOM state management, payment gateway SDK integrations, and high-FPS UI interactions.</p>
+          </div>
+        </div>
+        <span id="tech-active-layer" class="px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 font-mono text-xs shrink-0">
+          Frontend &amp; Logic Layer
+        </span>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CORE SERVICES SECTION (Matching Banner's 3 Pillars)       -->
+    <!-- ========================================================= -->
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 reveal">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-cyan-400/30 text-cyan-300 text-xs font-mono mb-4">
+          MY SERVICES &amp; CAPABILITIES
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          High-Impact Solutions Built for <span class="text-gradient-cyan">Growth</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-4">
+          Every project is crafted from scratch with enterprise-grade code quality, mobile-first responsiveness, and seamless payment &amp; WhatsApp automation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+
+        <!-- Service 1: Web Development -->
+        <div class="glass-panel glass-card-hover rounded-3xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-cyan-500/15 border border-cyan-400/40 flex items-center justify-center text-cyan-400 mb-6 shadow-lg shadow-cyan-500/15">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l-2 2 2 2m6-4l2 2-2 2" />
+              </svg>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Web Development</h3>
+              <span class="font-mono text-xs text-cyan-400 bg-cyan-500/10 border border-cyan-400/30 px-2.5 py-1 rounded-full">From ₹4,999</span>
+            </div>
+
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Responsive, fast &amp; secure websites tailored for corporate brands, startups, cyber cafes, coaching institutes, and local storefronts.
+            </p>
+
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-slate-800 pt-5">
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Ultra-fast Mobile-First Responsive UI</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Direct WhatsApp Lead &amp; Inquiry Integration</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Technical SEO, SSL Security &amp; Speed Optimization</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4">
+            <button onclick="selectServicePreset('web')" class="w-full py-3.5 px-5 rounded-2xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-400/40 text-cyan-300 font-bold text-sm transition-all flex items-center justify-center gap-2">
+              <span>Configure Web Package</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 2: E-Commerce Development (Featured) -->
+        <div class="glass-panel glass-card-hover rounded-3xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden border-cyan-400/45 shadow-[0_20px_60px_-15px_rgba(0,210,255,0.22)]">
+          <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-md">
+            Most Popular
+          </div>
+
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/20 border border-cyan-400/50 flex items-center justify-center text-cyan-300 mb-6 shadow-lg shadow-blue-500/20">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+              </svg>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h3 class="text-xl sm:text-2xl font-bold text-white">E-Commerce Development</h3>
+            </div>
+            <div class="mb-3">
+              <span class="font-mono text-xs text-cyan-300 bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 rounded-full">From ₹14,999</span>
+            </div>
+
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Complete online store with smart cart, UPI/Razorpay payment gateway, automated order management, and inventory tracking.
+            </p>
+
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-slate-800 pt-5">
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>UPI, Cards, NetBanking &amp; COD Checkout</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Full Admin Dashboard for Products &amp; Orders</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Invoice Generation &amp; Customer Order Tracking</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4">
+            <button onclick="selectServicePreset('ecommerce')" class="w-full btn-primary-glow py-3.5 px-5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+              <span>Configure E-Commerce Store</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 3: Custom Software Development -->
+        <div class="glass-panel glass-card-hover rounded-3xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-indigo-500/15 border border-indigo-400/40 flex items-center justify-center text-indigo-400 mb-6 shadow-lg shadow-indigo-500/15">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Custom Software</h3>
+              <span class="font-mono text-xs text-indigo-300 bg-indigo-500/15 border border-indigo-400/30 px-2.5 py-1 rounded-full">From ₹19,999</span>
+            </div>
+
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Tailored Java Spring Boot + React + MySQL web applications including CRM portals, billing systems, and workflow automation.
+            </p>
+
+            <ul class="space-y-3 text-sm text-slate-200 border-t border-slate-800 pt-5">
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Role-Based Authentication &amp; Secure REST APIs</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Custom Billing, CRM, School/Clinic &amp; ERP Portals</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Scalable MySQL Architecture &amp; Cloud Deployment</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4">
+            <button onclick="selectServicePreset('software')" class="w-full py-3.5 px-5 rounded-2xl bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-400/40 text-indigo-300 font-bold text-sm transition-all flex items-center justify-center gap-2">
+              <span>Configure Custom Software</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- INTERACTIVE PROJECT COST & SCOPE ESTIMATOR                -->
+    <!-- ========================================================= -->
+    <section id="estimator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 reveal">
+      <div class="glass-panel rounded-3xl p-6 sm:p-10 lg:p-12 border border-cyan-400/30">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-800">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-cyan-400 block mb-2">// INTERACTIVE QUOTE BUILDER</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+              Instant Project <span class="text-gradient-cyan">Cost &amp; Timeline Estimator</span>
+            </h2>
+            <p class="text-sm text-slate-300 mt-2 max-w-2xl">
+              Select your solution type and required modules below to calculate an instant estimate, then send your exact configuration directly to my WhatsApp in 1 click.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-400/30 px-4 py-2 rounded-full self-start">
+            <span>NO HIDDEN CHARGES • TRANSPARENT PRICING</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8">
+          <!-- Left Controls -->
+          <div class="lg:col-span-7 space-y-6">
+            <!-- Step 1: Base Solution -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-cyan-300 mb-3">
+                1. Choose Base Solution Type
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="base-type-group">
+                <button type="button" data-type="web" data-price="4999" data-days="4"
+                        class="base-option active text-left p-4 rounded-2xl border border-cyan-400 bg-cyan-500/15 transition-all">
+                  <div class="font-bold text-white text-sm">Business Website</div>
+                  <div class="font-mono text-xs text-cyan-300 mt-1">₹4,999 • ~4 Days</div>
+                </button>
+
+                <button type="button" data-type="ecommerce" data-price="14999" data-days="10"
+                        class="base-option text-left p-4 rounded-2xl border border-slate-700/80 bg-[#070f24]/70 hover:border-cyan-400/50 transition-all">
+                  <div class="font-bold text-white text-sm">E-Commerce Store</div>
+                  <div class="font-mono text-xs text-slate-400 mt-1">₹14,999 • ~10 Days</div>
+                </button>
+
+                <button type="button" data-type="software" data-price="19999" data-days="14"
+                        class="base-option text-left p-4 rounded-2xl border border-slate-700/80 bg-[#070f24]/70 hover:border-cyan-400/50 transition-all">
+                  <div class="font-bold text-white text-sm">Custom Software</div>
+                  <div class="font-mono text-xs text-slate-400 mt-1">₹19,999 • ~14 Days</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Add-on Modules -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-cyan-300 mb-3">
+                2. Toggle Required Features &amp; Modules
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="addon-group">
+                <label class="addon-card cursor-pointer flex items-center justify-between p-4 rounded-2xl border border-slate-700/80 bg-[#070f24]/70 hover:border-cyan-400/40 transition-all">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" value="UPI / Razorpay Payment Gateway" data-price="2500" data-days="2" class="addon-checkbox w-4 h-4 accent-cyan-400 rounded" />
+                    <div>
+                      <div class="text-sm font-semibold text-white">Payment Gateway</div>
+                      <div class="text-xs text-slate-400">UPI, Cards &amp; Auto-Receipts</div>
+                    </div>
+                  </div>
+                  <span class="font-mono text-xs text-cyan-300">+₹2,500</span>
+                </label>
+
+                <label class="addon-card cursor-pointer flex items-center justify-between p-4 rounded-2xl border border-slate-700/80 bg-[#070f24]/70 hover:border-cyan-400/40 transition-all">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" value="Admin Control Dashboard" data-price="4000" data-days="3" class="addon-checkbox w-4 h-4 accent-cyan-400 rounded" />
+                    <div>
+                      <div class="text-sm font-semibold text-white">Admin Panel &amp; CMS</div>
+                      <div class="text-xs text-slate-400">Manage content &amp; orders</div>
+                    </div>
+                  </div>
+                  <span class="font-mono text-xs text-cyan-300">+₹4,000</span>
+                </label>
+
+                <label class="addon-card cursor-pointer flex items-center justify-between p-4 rounded-2xl border border-slate-700/80 bg-[#070f24]/70 hover:border-cyan-400/40 transition-all">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" value="Advanced SEO & Speed Pack" data-price="1500" data-days="1" class="addon-checkbox w-4 h-4 accent-cyan-400 rounded" />
+                    <div>
+                      <div class="text-sm font-semibold text-white">SEO &amp; Google Indexing</div>
+                      <div class="text-xs text-slate-400">Meta tags, sitemap &amp; speed</div>
+                    </div>
+                  </div>
+                  <span class="font-mono text-xs text-cyan-300">+₹1,500</span>
+                </label>
+
+                <label class="addon-card cursor-pointer flex items-center justify-between p-4 rounded-2xl border border-slate-700/80 bg-[#070f24]/70 hover:border-cyan-400/40 transition-all">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" value="Domain + Cloud Hosting Setup" data-price="2000" data-days="1" class="addon-checkbox w-4 h-4 accent-cyan-400 rounded" />
+                    <div>
+                      <div class="text-sm font-semibold text-white">Domain &amp; Cloud Setup</div>
+                      <div class="text-xs text-slate-400">SSL, DNS &amp; live deployment</div>
+                    </div>
+                  </div>
+                  <span class="font-mono text-xs text-cyan-300">+₹2,000</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Summary Card -->
+          <div class="lg:col-span-5">
+            <div class="h-full rounded-3xl bg-gradient-to-b from-[#0b1838] to-[#050a18] border border-cyan-400/40 p-6 sm:p-7 flex flex-col justify-between shadow-2xl">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400 pb-4 border-b border-slate-800">
+                  <span>ESTIMATED INVESTMENT</span>
+                  <span id="est-timeline" class="text-cyan-300 font-semibold">~4 Working Days</span>
+                </div>
+
+                <div class="py-5">
+                  <div class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+                    ₹<span id="est-total">4,999</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-1.5">
+                    30% advance (₹<span id="est-advance">1,500</span>) to kick off development.
+                  </p>
+                </div>
+
+                <div class="space-y-2 border-t border-slate-800 pt-4">
+                  <div class="text-xs font-mono text-slate-400 uppercase">Selected Scope:</div>
+                  <ul id="est-summary-list" class="text-xs sm:text-sm text-slate-200 space-y-1.5">
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                      <span>Business Website (Core Architecture)</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="space-y-3 mt-7 pt-4 border-t border-slate-800">
+                <button onclick="sendEstimateToWhatsApp()" class="w-full btn-primary-glow py-3.5 px-5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2.5">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                  </svg>
+                  <span>Send Quote on WhatsApp</span>
+                </button>
+
+                <button onclick="bookAdvanceFromEstimator()" class="w-full py-3 px-5 rounded-2xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-400/35 text-cyan-300 font-semibold text-xs sm:text-sm transition-all">
+                  Book Slot Now via UPI (₹<span id="est-advance-btn">1,500</span>)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- DIRECT UPI PAYMENT & BOOKING HUB                          -->
+    <!-- ========================================================= -->
+    <section id="payment" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 reveal">
+      <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-cyan-400/30 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+          <!-- Left Info & UPI Controls -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/35 text-cyan-300 font-mono text-xs">
+              INSTANT UPI BOOKING &amp; PAYMENTS
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+              Fast &amp; Secure <span class="text-gradient-cyan">UPI Checkout</span>
+            </h2>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Lock in your project slot or clear milestone invoices directly via PhonePe, Google Pay, Paytm, or BHIM UPI. Select an amount below to update the dynamic QR code instantly.
+            </p>
+
+            <!-- UPI ID Copy Box -->
+            <div class="p-4 rounded-2xl bg-[#060d21] border border-cyan-400/35 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 block">Official Verified UPI ID</span>
+                <span id="upi-id-text" class="font-mono text-lg sm:text-xl font-bold text-cyan-300 select-all">468468468-@ybl</span>
+              </div>
+              <button onclick="copyUpiId()" class="px-5 py-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/50 text-cyan-200 font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 transition-all shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                </svg>
+                <span>Copy UPI ID</span>
+              </button>
+            </div>
+
+            <!-- Quick Amount Presets + Custom Input -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2.5">
+                Select or Enter Advance / Milestone Amount (INR)
+              </label>
+              <div class="flex flex-wrap items-center gap-2.5">
+                <button type="button" onclick="setUpiAmount(1000)" class="upi-preset-btn px-4 py-2 rounded-xl border border-cyan-400 bg-cyan-500/20 text-white font-mono text-xs font-bold">₹1,000</button>
+                <button type="button" onclick="setUpiAmount(2500)" class="upi-preset-btn px-4 py-2 rounded-xl border border-slate-700 bg-[#070f24] text-slate-300 hover:border-cyan-400/50 font-mono text-xs font-bold">₹2,500</button>
+                <button type="button" onclick="setUpiAmount(5000)" class="upi-preset-btn px-4 py-2 rounded-xl border border-slate-700 bg-[#070f24] text-slate-300 hover:border-cyan-400/50 font-mono text-xs font-bold">₹5,000</button>
+                <div class="relative flex-1 min-w-[140px]">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono text-sm text-cyan-400">₹</span>
+                  <input id="upi-amount-input" type="number" min="1" value="1000" oninput="updateUpiQr(this.value)"
+                         class="w-full pl-8 pr-4 py-2 rounded-xl bg-[#070f24] border border-slate-700 focus:border-cyan-400 focus:outline-none font-mono text-sm text-white"
+                         placeholder="Custom ₹" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a id="upi-deep-link" href="upi://pay?pa=468468468-@ybl&pn=Ashish%20Kumar&am=1000&cu=INR"
+                 class="btn-primary-glow px-6 py-3.5 rounded-2xl text-white font-bold text-sm inline-flex items-center gap-2">
+                <span>Pay ₹<span id="upi-pay-btn-amt">1,000</span> via UPI App</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+
+              <a id="upi-whatsapp-proof" href="https://wa.me/918292794750?text=Hi%20Ashish%2C%20I%20have%20made%20a%20UPI%20payment%20of%20%E2%82%B91000%20to%20468468468-%40ybl.%20Here%20is%20my%20screenshot%3A"
+                 target="_blank" rel="noopener noreferrer"
+                 class="px-5 py-3.5 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/40 text-emerald-300 font-bold text-sm inline-flex items-center gap-2 transition-all">
+                <span>Send Screenshot on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Dynamic QR Code Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-xs rounded-3xl bg-white p-6 text-center shadow-[0_25px_60px_-10px_rgba(0,210,255,0.35)] border-4 border-cyan-400/60">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-slate-900">SCAN WITH ANY UPI APP</div>
+              <div class="text-[11px] font-medium text-slate-500 mt-0.5 mb-4">PhonePe • Google Pay • Paytm • BHIM</div>
+
+              <div id="upi-qr-box" class="p-2 bg-white rounded-2xl border border-slate-200 flex items-center justify-center min-h-[196px]"></div>
+
+              <div class="mt-4 pt-3 border-t border-slate-200">
+                <div class="text-sm font-extrabold text-slate-900">Ashish Kumar</div>
+                <div class="font-mono text-xs text-blue-600 font-bold mt-0.5">468468468-@ybl</div>
+                <div class="mt-2 inline-block px-3 py-1 rounded-full bg-slate-900 text-cyan-300 font-mono text-xs font-bold">
+                  Amount: ₹<span id="qr-display-amt">1,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- HIGH-CONVERTING CONTACT & WHATSAPP DIRECT HUB             -->
+    <!-- ========================================================= -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 reveal">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left Direct Contact Channels -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="font-mono text-xs uppercase tracking-widest text-cyan-400 block">// START A CONVERSATION</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            Let’s Build Your <span class="text-gradient-cyan">Next Big Idea</span>
+          </h2>
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+            Have a website, e-commerce store, or custom software idea in mind? Reach out directly via WhatsApp, phone call, or email for a free 15-minute technical consultation.
+          </p>
+
+          <div class="space-y-3.5 pt-2">
+            <!-- WhatsApp Card -->
+            <a href="https://wa.me/918292794750?text=Hi%20Ashish%2C%20I%20would%20like%20to%20discuss%20a%20new%20project."
+               target="_blank" rel="noopener noreferrer"
+               class="glass-panel glass-card-hover rounded-2xl p-4 flex items-center gap-4 border border-emerald-400/30">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/40 flex items-center justify-center text-emerald-400 shrink-0">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-emerald-400">INSTANT WHATSAPP CHAT</div>
+                <div class="text-base font-bold text-white">+91 8292794750</div>
+              </div>
+            </a>
+
+            <!-- Direct Phone Call Card -->
+            <a href="tel:+918292794750"
+               class="glass-panel glass-card-hover rounded-2xl p-4 flex items-center gap-4 border border-cyan-400/25">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-cyan-400">DIRECT VOICE CALL</div>
+                <div class="text-base font-bold text-white">+91 8292794750</div>
+              </div>
+            </a>
+
+            <!-- Email Card -->
+            <a href="mailto:ashishkr6422@gmail.com"
+               class="glass-panel glass-card-hover rounded-2xl p-4 flex items-center gap-4 border border-blue-400/25">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/15 border border-blue-400/40 flex items-center justify-center text-blue-400 shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-blue-400">OFFICIAL EMAIL</div>
+                <div class="text-base font-bold text-white">ashishkr6422@gmail.com</div>
+              </div>
+            </a>
+
+            <!-- Social Profiles Row: GitHub & LinkedIn -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+              <a href="https://github.com/ashishkar62043-dotcom" target="_blank" rel="noopener noreferrer"
+                 class="glass-panel glass-card-hover rounded-2xl p-4 flex items-center gap-3.5 border border-slate-600/40 hover:border-cyan-400/50">
+                <div class="w-11 h-11 rounded-xl bg-slate-800/90 border border-slate-600/60 flex items-center justify-center text-white shrink-0">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-[11px] font-mono text-slate-400">CODE REPOSITORIES</div>
+                  <div class="text-sm font-bold text-white truncate">GitHub Profile</div>
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/ashish-kumar-a4a586448/" target="_blank" rel="noopener noreferrer"
+                 class="glass-panel glass-card-hover rounded-2xl p-4 flex items-center gap-3.5 border border-sky-500/30 hover:border-cyan-400/50">
+                <div class="w-11 h-11 rounded-xl bg-sky-500/15 border border-sky-400/40 flex items-center justify-center text-sky-400 shrink-0">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-[11px] font-mono text-sky-400">PROFESSIONAL NETWORK</div>
+                  <div class="text-sm font-bold text-white truncate">LinkedIn Profile</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Interactive WhatsApp Message Builder Form -->
+        <div class="lg:col-span-7">
+          <form id="whatsapp-contact-form" onsubmit="handleContactSubmit(event)" class="glass-panel rounded-3xl p-6 sm:p-8 border border-cyan-400/30 space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <h3 class="text-xl font-bold text-white">Quick Project Inquiry</h3>
+              <span class="font-mono text-xs text-cyan-300">Replies within 15 mins</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="client-name" class="block text-xs font-mono text-slate-300 mb-1.5">Your Full Name *</label>
+                <input id="client-name" type="text" required placeholder="e.g. Rahul Verma"
+                       class="w-full px-4 py-3 rounded-xl bg-[#070f24] border border-slate-700 focus:border-cyan-400 focus:outline-none text-sm text-white placeholder-slate-500" />
+              </div>
+
+              <div>
+                <label for="client-business" class="block text-xs font-mono text-slate-300 mb-1.5">Project / Business Type</label>
+                <select id="client-business"
+                        class="w-full px-4 py-3 rounded-xl bg-[#070f24] border border-slate-700 focus:border-cyan-400 focus:outline-none text-sm text-white">
+                  <option value="Business / Startup Website">Business / Startup Website</option>
+                  <option value="E-Commerce Online Store">E-Commerce Online Store</option>
+                  <option value="Custom Web Software / CRM">Custom Web Software / CRM</option>
+                  <option value="Portfolio / Personal Brand">Portfolio / Personal Brand</option>
+                  <option value="Other Custom Requirement">Other Custom Requirement</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="client-message" class="block text-xs font-mono text-slate-300 mb-1.5">Project Details &amp; Goals *</label>
+              <textarea id="client-message" rows="4" required placeholder="Tell me briefly about your website or software requirements, target launch date, or reference ideas..."
+                        class="w-full px-4 py-3 rounded-xl bg-[#070f24] border border-slate-700 focus:border-cyan-400 focus:outline-none text-sm text-white placeholder-slate-500"></textarea>
+            </div>
+
+            <button type="submit" class="w-full btn-primary-glow py-4 px-6 rounded-2xl text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5">
+              <span>Launch WhatsApp Chat with Details</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- PREMIUM FOOTER                                            -->
+  <!-- ========================================================= -->
+      <div class="font-mono text-center sm:text-right flex flex-wrap items-center justify-center sm:justify-end gap-3">
+        <span>UPI: <strong class="text-cyan-300">468468468-@ybl</strong></span>
+        <span class="text-slate-600">|</span>
+        <a href="https://github.com/ashishkar62043-dotcom" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>GitHub</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <a href="https://www.linkedin.com/in/ashish-kumar-a4a586448/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" /></svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- FLOATING WHATSAPP QUICK-ACTION BUTTON                     -->
+  <!-- ========================================================= -->
+  <a href="https://wa.me/918292794750?text=Hi%20Ashish%2C%20I%20want%20to%20build%20a%20website%20%2F%20software."
+     target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
+     class="fixed bottom-6 right-6 z-40 group flex items-center gap-3">
+    <span class="hidden sm:inline-block px-3.5 py-2 rounded-full glass-panel border border-emerald-400/40 text-xs font-bold text-white shadow-xl opacity-0 group-hover:opacity-100 transition-opacity">
+      Chat with Ashish
+    </span>
+    <div class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 text-white flex items-center justify-center shadow-[0_10px_30px_rgba(16,185,129,0.5)] hover:scale-110 transition-transform">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-30"></span>
+      <svg class="w-7 h-7 fill-current relative z-10" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+      </svg>
+    </div>
+  </a>
+
+  <!-- ========================================================= -->
+  <!-- INSTANT UPI PAYMENT MODAL                                 -->
+  <!-- ========================================================= -->
+  <div id="upi-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#030712]/80 backdrop-blur-md">
+    <div class="glass-panel rounded-3xl max-w-md w-full p-6 sm:p-7 border border-cyan-400/40 relative shadow-2xl">
+      <button onclick="closeUpiModal()" aria-label="Close Modal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center">
+        <span class="px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-400/35 text-cyan-300 font-mono text-[11px]">DIRECT UPI PAYMENT</span>
+        <h3 class="text-xl font-extrabold text-white mt-3">Pay Ashish Kumar</h3>
+        <p class="text-xs text-slate-400 mt-1">Scan QR or tap below to pay via PhonePe / GPay / Paytm</p>
+
+        <div class="my-5 mx-auto w-52 bg-white p-3.5 rounded-2xl border-2 border-cyan-400 shadow-lg">
+          <div id="modal-qr-box" class="flex items-center justify-center min-h-[168px]"></div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-[#070f24] border border-cyan-400/30 flex items-center justify-between mb-4">
+          <span class="font-mono text-sm font-bold text-cyan-300">468468468-@ybl</span>
+          <button onclick="copyUpiId()" class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-200 font-mono text-xs font-bold hover:bg-cyan-500/30">Copy</button>
+        </div>
+
+        <a id="modal-upi-link" href="upi://pay?pa=468468468-@ybl&pn=Ashish%20Kumar&am=1000&cu=INR"
+           class="w-full btn-primary-glow py-3.5 rounded-2xl text-white font-bold text-sm block text-center">
+          Open UPI App (₹<span id="modal-upi-amt">1,000</span>)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT ARCHITECTURE                                   -->
+  <!-- ========================================================= -->
+  <script>
+    // -----------------------------------------------------------
+    // 1. Toast Notification System (Zero alert() usage)
+    // -----------------------------------------------------------
+    let toastTimer = null;
+    function showToast(title, message) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-message').textContent = message;
+      toast.classList.remove('translate-x-[130%]');
+      toast.classList.add('translate-x-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-x-[130%]');
+        toast.classList.remove('translate-x-0');
+      }, 3400);
+    }
+
+    // -----------------------------------------------------------
+    // 2. Copy UPI ID with Fallback for iFrames / Mobile
+    // -----------------------------------------------------------
+    function copyUpiId() {
+      const upi = '468468468-@ybl';
+      const tempInput = document.createElement('input');
+      tempInput.value = upi;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      tempInput.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+        showToast('UPI ID Copied!', '468468468-@ybl copied to clipboard.');
+      } catch (err) {
+        showToast('UPI ID Ready', '468468468-@ybl');
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // -----------------------------------------------------------
+    // 3. Dynamic UPI QR Code Generator
+    // -----------------------------------------------------------
+    function updateUpiQr(rawAmount) {
+      const amt = Math.max(1, parseInt(rawAmount, 10) || 1000);
+      const formatted = amt.toLocaleString('en-IN');
+      const upiUri = `upi://pay?pa=468468468-@ybl&pn=Ashish%20Kumar&am=${amt}&cu=INR`;
+
+      // Update labels & deep links
+      document.getElementById('qr-display-amt').textContent = formatted;
+      document.getElementById('upi-pay-btn-amt').textContent = formatted;
+      document.getElementById('modal-upi-amt').textContent = formatted;
+      document.getElementById('upi-deep-link').href = upiUri;
+      document.getElementById('modal-upi-link').href = upiUri;
+
+      const waMsg = encodeURIComponent(`Hi Ashish, I have paid ₹${formatted} via UPI to 468468468-@ybl. Sharing my payment screenshot:`);
+      document.getElementById('upi-whatsapp-proof').href = `https://wa.me/918292794750?text=${waMsg}`;
+
+      // Render main QR box
+      const mainBox = document.getElementById('upi-qr-box');
+      mainBox.innerHTML = '';
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(mainBox, {
+          text: upiUri,
+          width: 180,
+          height: 180,
+          colorDark: '#050a18',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+
+      // Render modal QR box
+      const modalBox = document.getElementById('modal-qr-box');
+      modalBox.innerHTML = '';
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(modalBox, {
+          text: upiUri,
+          width: 160,
+          height: 160,
+          colorDark: '#050a18',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+    }
+
+    function setUpiAmount(amt) {
+      document.getElementById('upi-amount-input').value = amt;
+      document.querySelectorAll('.upi-preset-btn').forEach(btn => {
+        const btnAmt = parseInt(btn.textContent.replace(/[^\d]/g, ''), 10);
+        if (btnAmt === amt) {
+          btn.classList.add('border-cyan-400', 'bg-cyan-500/20', 'text-white');
+          btn.classList.remove('border-slate-700', 'bg-[#070f24]', 'text-slate-300');
+        } else {
+          btn.classList.remove('border-cyan-400', 'bg-cyan-500/20', 'text-white');
+          btn.classList.add('border-slate-700', 'bg-[#070f24]', 'text-slate-300');
+        }
+      });
+      updateUpiQr(amt);
+    }
+
+    function openUpiModal(amt = 1000) {
+      setUpiAmount(amt);
+      const modal = document.getElementById('upi-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeUpiModal() {
+      const modal = document.getElementById('upi-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // -----------------------------------------------------------
+    // 4. Tech Stack Matrix Data & Interactive Rendering
+    // -----------------------------------------------------------
+    const techStackData = [
+      {
+        id: 'html5',
+        name: 'HTML5',
+        badge: 'HTML5',
+        color: '#f97316',
+        layer: 'Semantic Structure',
+        title: 'HTML5 & Semantic Accessibility',
+        desc: 'Clean, SEO-friendly semantic markup structured for maximum search engine visibility and fast browser rendering.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8"><path d="M4 3l1.5 16.5L12 21l6.5-1.5L20 3H4z"/><path d="M16 8H8.5l.3 3.5h6.9l-.6 5-3.1.9-3.1-.9-.2-2"/></svg>`
+      },
+      {
+        id: 'css3',
+        name: 'CSS3',
+        badge: 'CSS3',
+        color: '#38bdf8',
+        layer: 'Visual Styling',
+        title: 'CSS3, Glassmorphism & Responsive Grid',
+        desc: 'Fluid mobile-first layouts, hardware-accelerated 60fps animations, and modern glassmorphic visual systems.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><path d="M4 3l1.5 16.5L12 21l6.5-1.5L20 3H4z"/><path d="M8 8h8l-.4 3.5H9.5m6.1 0l-.5 5-3.1.9-3.1-.9-.2-2"/></svg>`
+      },
+      {
+        id: 'js',
+        name: 'JavaScript',
+        badge: 'JS',
+        color: '#facc15',
+        layer: 'Frontend & Logic Layer',
+        title: 'JavaScript (ES6+) & Interactive Architecture',
+        desc: 'Asynchronous APIs, dynamic DOM state management, payment gateway SDK integrations, and high-FPS UI interactions.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M10 10v6a2 2 0 01-2 2H7m7-8h3v3h-3v3h3"/></svg>`
+      },
+      {
+        id: 'java',
+        name: 'Java',
+        badge: 'JAVA',
+        color: '#fb7185',
+        layer: 'Enterprise Backend',
+        title: 'Core & Enterprise Java',
+        desc: 'Object-oriented, multithreaded, type-safe backend business logic engineered for high reliability and zero downtime.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#fb7185" stroke-width="1.8"><path d="M6 14h11a3 3 0 010 6H6a3 3 0 010-6z"/><path d="M17 15h2a2 2 0 010 4h-2"/><path d="M9 10c0-2 2-2 2-4m3 4c0-2 2-2 2-4"/></svg>`
+      },
+      {
+        id: 'spring',
+        name: 'Spring Boot',
+        badge: 'SPRING',
+        color: '#4ade80',
+        layer: 'REST APIs & Microservices',
+        title: 'Spring Boot & Spring Security',
+        desc: 'Production-grade RESTful APIs, JWT authentication, role-based access control, and seamless payment webhook handling.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.8"><path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9c0-2.1.72-4.03 1.93-5.56"/><path d="M8 14c3 0 6-2 7-6-3 1-5 3-7 6z"/></svg>`
+      },
+      {
+        id: 'mysql',
+        name: 'MySQL',
+        badge: 'MYSQL',
+        color: '#00d2ff',
+        layer: 'Relational Database',
+        title: 'MySQL Database Design & Optimization',
+        desc: 'Normalized schemas, ACID-compliant transactions for orders & billing, indexed queries, and automated backups.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>`
+      },
+      {
+        id: 'react',
+        name: 'React',
+        badge: 'REACT',
+        color: '#22d3ee',
+        layer: 'Modern UI Components',
+        title: 'React.js Single-Page Applications',
+        desc: 'Modular, lightning-fast component architecture with real-time state updates for dashboards and e-commerce storefronts.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.6"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(-30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(90 12 12)"/></svg>`
+      },
+      {
+        id: 'bootstrap',
+        name: 'Bootstrap',
+        badge: 'BS5',
+        color: '#a78bfa',
+        layer: 'Rapid UI Systems',
+        title: 'Bootstrap 5 & Component Prototyping',
+        desc: 'Consistent grid systems, responsive admin panels, and cross-browser compatible interface components.',
+        svg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 8h4a2 2 0 010 4H9V8zm0 4h4.5a2 2 0 010 4H9v-4z"/></svg>`
+      }
+    ];
+
+    function initTechGrid() {
+      const grid = document.getElementById('tech-grid');
+      grid.innerHTML = techStackData.map((tech, idx) => `
+        <button type="button" onclick="selectTech(${idx})"
+                class="tech-item glass-panel rounded-2xl p-4 flex flex-col items-center justify-center gap-2.5 border ${idx === 2 ? 'border-cyan-400 bg-cyan-500/15' : 'border-cyan-500/15'} hover:border-cyan-400/60 transition-all group">
+          <div class="transform group-hover:scale-110 transition-transform">
+            ${tech.svg}
+          </div>
+          <span class="font-mono text-xs font-bold text-slate-200 group-hover:text-white">${tech.name}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectTech(index) {
+      const tech = techStackData[index];
+      document.getElementById('tech-active-badge').textContent = tech.badge;
+      document.getElementById('tech-active-title').textContent = tech.title;
+      document.getElementById('tech-active-desc').textContent = tech.desc;
+      document.getElementById('tech-active-layer').textContent = tech.layer;
+
+      document.querySelectorAll('.tech-item').forEach((el, idx) => {
+        if (idx === index) {
+          el.classList.add('border-cyan-400', 'bg-cyan-500/15');
+          el.classList.remove('border-cyan-500/15');
+        } else {
+          el.classList.remove('border-cyan-400', 'bg-cyan-500/15');
+          el.classList.add('border-cyan-500/15');
+        }
+      });
+    }
+
+    // -----------------------------------------------------------
+    // 5. Interactive Project Cost & Scope Estimator
+    // -----------------------------------------------------------
+    let selectedBase = {
+      type: 'web',
+      label: 'Business Website',
+      price: 4999,
+      days: 4
+    };
+
+    function recalcEstimate() {
+      let total = selectedBase.price;
+      let days = selectedBase.days;
+      const items = [`${selectedBase.label} (Core Architecture)`];
+
+      document.querySelectorAll('.addon-checkbox:checked').forEach(cb => {
+        total += parseInt(cb.dataset.price, 10);
+        days += parseInt(cb.dataset.days, 10);
+        items.push(cb.value);
+      });
+
+      const advance = Math.round((total * 0.3) / 100) * 100;
+
+      document.getElementById('est-total').textContent = total.toLocaleString('en-IN');
+      document.getElementById('est-timeline').textContent = `~${days} Working Days`;
+      document.getElementById('est-advance').textContent = advance.toLocaleString('en-IN');
+      document.getElementById('est-advance-btn').textContent = advance.toLocaleString('en-IN');
+
+      const listEl = document.getElementById('est-summary-list');
+      listEl.innerHTML = items.map(item => `
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      return { total, days, advance, items };
+    }
+
+    function selectServicePreset(type) {
+      const targetBtn = document.querySelector(`.base-option[data-type="${type}"]`);
+      if (targetBtn) {
+        targetBtn.click();
+      }
+      document.getElementById('estimator').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function sendEstimateToWhatsApp() {
+      const { total, days, items } = recalcEstimate();
+      const msg = [
+        `Hi Ashish Kumar, I generated a project quote on your portfolio:`,
+        `• Base Package: ${selectedBase.label}`,
+        `• Features: ${items.join(', ')}`,
+        `• Estimated Timeline: ~${days} Working Days`,
+        `• Estimated Total: ₹${total.toLocaleString('en-IN')}`,
+        `Let's discuss getting started!`
+      ].join('\n');
+
+      window.open(`https://wa.me/918292794750?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    }
+
+    function bookAdvanceFromEstimator() {
+      const { advance } = recalcEstimate();
+      openUpiModal(advance);
+    }
+
+    // -----------------------------------------------------------
+    // 6. Contact Form -> WhatsApp Launcher
+    // -----------------------------------------------------------
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('client-name').value.trim();
+      const business = document.getElementById('client-business').value;
+      const message = document.getElementById('client-message').value.trim();
+
+      const text = [
+        `Hi Ashish, I'm ${name}.`,
+        `Project Type: ${business}`,
+        `Requirement: ${message}`
+      ].join('\n');
+
+      showToast('Opening WhatsApp...', 'Redirecting with your pre-filled project details.');
+      window.open(`https://wa.me/918292794750?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    }
+
+    // -----------------------------------------------------------
+    // 7. Interactive 3D Tilt Effect on Hero Card
+    // -----------------------------------------------------------
+    function initTiltCard() {
+      const card = document.getElementById('hero-tilt-card');
+      if (!card) return;
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    }
+
+    // -----------------------------------------------------------
+    // 8. High-FPS Interactive Neural Particle Canvas Background
+    // -----------------------------------------------------------
+    function initNeuralCanvas() {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      const mouse = { x: null, y: null, radius: 150 };
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener('mouseout', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      const particleCount = Math.min(75, Math.floor((width * height) / 18000));
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          size: Math.random() * 1.8 + 0.8
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // Mouse repulsion / attraction subtle depth
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - p.x;
+            const dy = mouse.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              p.x -= dx * 0.012;
+              p.y -= dy * 0.012;
+            }
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 210, 255, 0.55)';
+          ctx.fill();
+
+          // Connect nearby nodes
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 135) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0, 210, 255, ${(1 - dist / 135) * 0.16})`;
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    // -----------------------------------------------------------
+    // 9. Initialization on Window Load
+    // -----------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      initTechGrid();
+      initTiltCard();
+      initNeuralCanvas();
+      updateUpiQr(1000);
+
+      // Base option listeners
+      document.querySelectorAll('.base-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.base-option').forEach(b => {
+            b.classList.remove('active', 'border-cyan-400', 'bg-cyan-500/15');
+            b.classList.add('border-slate-700/80', 'bg-[#070f24]/70');
+          });
+          btn.classList.add('active', 'border-cyan-400', 'bg-cyan-500/15');
+          btn.classList.remove('border-slate-700/80', 'bg-[#070f24]/70');
+
+          selectedBase = {
+            type: btn.dataset.type,
+            label: btn.querySelector('div').textContent.trim(),
+            price: parseInt(btn.dataset.price, 10),
+            days: parseInt(btn.dataset.days, 10)
+          };
+          recalcEstimate();
+        });
+      });
+
+      // Addon checkbox listeners
+      document.querySelectorAll('.addon-checkbox').forEach(cb => {
+        cb.addEventListener('change', recalcEstimate);
+      });
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+
+      // Scroll reveal observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
